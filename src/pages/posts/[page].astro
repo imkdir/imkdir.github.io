@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import type { PaginateFunction } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EntryList from "../../components/EntryList.astro";
+
+export async function getStaticPaths({
+    paginate,
+}: {
+    paginate: PaginateFunction;
+}) {
+    const allPosts = await getCollection("posts");
+    const sorted = allPosts.sort(
+        (a, b) =>
+            b.data.published_at?.valueOf() - a.data.published_at?.valueOf(),
+    );
+    return paginate(sorted, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Posts">
+    <h1
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 2rem;"
+    >
+        Archive / Posts
+    </h1>
+
+    <EntryList page={page} collectionPath="posts" />
+</BaseLayout>

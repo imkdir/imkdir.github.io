@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import type { PaginateFunction } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths({
+    paginate,
+}: {
+    paginate: PaginateFunction;
+}) {
+    const allGear = await getCollection("gear");
+    const sorted = allGear.sort(
+        (a, b) =>
+            (b.data.acquired_date?.valueOf() ?? 0) -
+            (a.data.acquired_date?.valueOf() ?? 0),
+    );
+    return paginate(sorted, { pageSize: 12 }); // 12 items looks better in masonry
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Inventory">
+    <h1
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 2rem;"
+    >
+        Archive / Inventory
+    </h1>
+
+    <div class="masonry-container">
+        {
+            page.data.map((item) => (
+                <a href={`/uses/${item.slug}`} class="masonry-item">
+                    <img
+                        src={item.data.cover_img}
+                        alt={item.data.name}
+                        loading="lazy"
+                    />
+                    <div class="item-details">
+                        <span class="item-name">{item.data.name}</span>
+                        <span class="item-maker">{item.data.maker}</span>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+
+    <footer
+        style="margin-top: 4rem; display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: #5f6368; font-weight: bold;"
+    >
+        {page.url.prev ? <a href={page.url.prev}>PREV</a> : <span>PREV</span>}
+        <span>{page.currentPage} / {page.lastPage}</span>
+        {page.url.next ? <a href={page.url.next}>NEXT</a> : <span>NEXT</span>}
+    </footer>
+</BaseLayout>
+
+<style>
+    .masonry-container {
+        column-count: 2;
+        column-gap: 1.5rem;
+        width: 100%;
+    }
+
+    @media (max-width: 600px) {
+        .masonry-container {
+            column-count: 1;
+        }
+    }
+
+    .masonry-item {
+        display: inline-block; /* Required for column-count to work correctly */
+        width: 100%;
+        margin-bottom: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
+    }
+
+    .masonry-item:hover {
+        opacity: 0.8;
+    }
+
+    .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+        border: 1px solid #3c4043;
+    }
+
+    .item-details {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .item-name {
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    .item-maker {
+        font-size: 0.8rem;
+        color: #5f6368;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+</style>

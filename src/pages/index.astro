@@ -1,17 +1,300 @@
 ---
+import { getCollection } from "astro:content";
 
+const allPosts = await getCollection("posts");
+const recentPosts = allPosts
+    .sort(
+        (a, b) => b.data.published_at.valueOf() - a.data.published_at.valueOf(),
+    )
+    .slice(0, 3);
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Imkdir - Digital Museum</title>
+    </head>
+    <body
+        style="background: #121212; color: #e8eaed; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; padding: 4rem 2rem; max-width: 700px; margin: 0 auto; line-height: 1.6;"
+    >
+        <header style="margin-bottom: 4rem;">
+            <h1
+                style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em;"
+            >
+                imkdir.
+            </h1>
+            <p style="color: #9aa0a6; font-size: 1.1rem; max-width: 500px;">
+                A personal weblog, digital museum, and cabinet of curiosities.
+                Documenting the things I build, read, watch, and use.
+            </p>
+        </header>
+
+        <main>
+            <section style="margin-bottom: 4rem;">
+                <h2
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #5f6368; margin-bottom: 1.5rem; border-bottom: 1px solid #3c4043; padding-bottom: 0.5rem;"
+                >
+                    The Archives
+                </h2>
+
+                <ul
+                    style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;"
+                >
+                    <li>
+                        <a href="/posts" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path d="M12 20h9"></path><path
+                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                                ></path></svg
+                            >
+                            <span>Weblog</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/films" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><rect
+                                    x="2"
+                                    y="2"
+                                    width="20"
+                                    height="20"
+                                    rx="2.18"
+                                    ry="2.18"></rect><line
+                                    x1="7"
+                                    y1="2"
+                                    x2="7"
+                                    y2="22"></line><line
+                                    x1="17"
+                                    y1="2"
+                                    x2="17"
+                                    y2="22"></line><line
+                                    x1="2"
+                                    y1="12"
+                                    x2="22"
+                                    y2="12"></line><line
+                                    x1="2"
+                                    y1="7"
+                                    x2="7"
+                                    y2="7"></line><line
+                                    x1="2"
+                                    y1="17"
+                                    x2="7"
+                                    y2="17"></line><line
+                                    x1="17"
+                                    y1="17"
+                                    x2="22"
+                                    y2="17"></line><line
+                                    x1="17"
+                                    y1="7"
+                                    x2="22"
+                                    y2="7"></line></svg
+                            >
+                            <span>Cinema</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/books" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                                ></path><path
+                                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                                ></path></svg
+                            >
+                            <span>Library</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/apps" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><rect
+                                    x="2"
+                                    y="3"
+                                    width="20"
+                                    height="14"
+                                    rx="2"
+                                    ry="2"></rect><line
+                                    x1="8"
+                                    y1="21"
+                                    x2="16"
+                                    y2="21"></line><line
+                                    x1="12"
+                                    y1="17"
+                                    x2="12"
+                                    y2="21"></line></svg
+                            >
+                            <span>Portfolio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/uses" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"
+                                ></line><path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                                ></path><polyline
+                                    points="3.27 6.96 12 12.01 20.73 6.96"
+                                ></polyline><line
+                                    x1="12"
+                                    y1="22.08"
+                                    x2="12"
+                                    y2="12"></line></svg
+                            >
+                            <span>Inventory</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/ideas" class="nav-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                ></path></svg
+                            >
+                            <span>Ideas</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #5f6368; margin-bottom: 1.5rem; border-bottom: 1px solid #3c4043; padding-bottom: 0.5rem;"
+                >
+                    Latest Writing
+                </h2>
+
+                {
+                    recentPosts.length > 0 ? (
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flexDirection: column; gap: 1.5rem;">
+                            {recentPosts.map((post) => (
+                                <li>
+                                    <a
+                                        href={`/posts/${post.slug}`}
+                                        style="text-decoration: none; color: inherit;"
+                                        class="post-link"
+                                    >
+                                        <span style="color: #9aa0a6; font-size: 0.9rem; display: block; margin-bottom: 0.2rem;">
+                                            {
+                                                post.data.published_at
+                                                    .toISOString()
+                                                    .split("T")[0]
+                                            }
+                                        </span>
+                                        <h3 style="font-size: 1.2rem; margin: 0; font-weight: 500;">
+                                            {post.data.title}
+                                        </h3>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p style="color: #5f6368; font-style: italic;">
+                            Nothing published yet.
+                        </p>
+                    )
+                }
+
+                {
+                    recentPosts.length > 0 && (
+                        <a
+                            href="/posts"
+                            style="display: inline-block; margin-top: 1.5rem; color: #8ab4f8; font-size: 0.95rem; text-decoration: none;"
+                            class="view-all"
+                        >
+                            View all entries &rarr;
+                        </a>
+                    )
+                }
+            </section>
+        </main>
+
+        <style>
+            .nav-link {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #e8eaed;
+                text-decoration: none;
+                padding: 0.5rem 0;
+                font-size: 1.05rem;
+                transition:
+                    color 0.2s ease,
+                    transform 0.2s ease;
+            }
+            .nav-link:hover {
+                color: #8ab4f8;
+                transform: translateX(4px);
+            }
+
+            .post-link h3 {
+                transition: color 0.2s ease;
+            }
+            .post-link:hover h3 {
+                color: #8ab4f8;
+            }
+
+            .view-all:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </body>
 </html>

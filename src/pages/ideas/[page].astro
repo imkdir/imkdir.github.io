@@ -1,0 +1,97 @@
+---
+import { getCollection } from "astro:content";
+import type { PaginateFunction } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths({
+    paginate,
+}: {
+    paginate: PaginateFunction;
+}) {
+    const allIdeas = await getCollection("ideas");
+    const sorted = allIdeas.sort(
+        (a, b) =>
+            b.data.date_published.valueOf() - a.data.date_published.valueOf(),
+    );
+
+    return paginate(sorted, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+
+// Render the Markdown for the 10 quotes on this specific page
+const ideasOnPage = await Promise.all(
+    page.data.map(async (quote) => {
+        const { Content } = await quote.render();
+        return { ...quote, Content };
+    }),
+);
+---
+
+<BaseLayout title="Ideas">
+    <h1
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 3rem;"
+    >
+        Archive / Ideas
+    </h1>
+
+    <div style="display: flex; flex-direction: column; gap: 4rem;">
+        {
+            ideasOnPage.map((item) => (
+                <article style="border-left: 1px solid #3c4043; padding-left: 1.5rem; position: relative;">
+                    <div style="position: absolute; left: -4px; top: 0; width: 7px; height: 7px; background: #3c4043; border-radius: 50%;" />
+
+                    <header style="margin-bottom: 0.8rem;">
+                        <time style="color: #5f6368; font-size: 0.8rem; font-family: ui-monospace, monospace;">
+                            {
+                                item.data.date_published
+                                    .toISOString()
+                                    .split("T")[0]
+                            }
+                        </time>
+                    </header>
+
+                    <div
+                        class="quote-content"
+                        style="font-size: 1.05rem; line-height: 1.6; color: #e8eaed;"
+                    >
+                        <item.Content />
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+
+    {/* Standard Minimalist Pagination */}
+    <footer
+        style="margin-top: 5rem; display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: #5f6368; font-weight: bold;"
+    >
+        {
+            page.url.prev ? (
+                <a href={page.url.prev} style="color: #8ab4f8;">
+                    PREV
+                </a>
+            ) : (
+                <span>PREV</span>
+            )
+        }
+        <span style="letter-spacing: 0.1em;"
+            >{page.currentPage} / {page.lastPage}</span
+        >
+        {
+            page.url.next ? (
+                <a href={page.url.next} style="color: #8ab4f8;">
+                    NEXT
+                </a>
+            ) : (
+                <span>NEXT</span>
+            )
+        }
+    </footer>
+</BaseLayout>
+
+<style is:global>
+    .quote-content p {
+        margin: 0;
+    }
+</style>

@@ -1,0 +1,93 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const gearEntries = await getCollection("gear");
+    return gearEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.name}>
+    <div style="margin-bottom: 2rem;">
+        <a
+            href="/uses"
+            style="display: inline-flex; align-items: center; gap: 8px; color: #5f6368; text-decoration: none; font-size: 0.9rem;"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                    points="12 19 5 12 12 5"></polyline></svg
+            >
+            <span>menu</span>
+        </a>
+    </div>
+
+    <article>
+        <header style="margin-bottom: 2.5rem;">
+            <h1
+                style="font-size: 1.8rem; margin: 0 0 0.5rem 0; font-weight: 600; letter-spacing: -0.01em;"
+            >
+                {entry.data.name}
+            </h1>
+            <div
+                style="display: flex; gap: 1rem; color: #5f6368; font-size: 0.85rem; font-family: ui-monospace, monospace; text-transform: lowercase;"
+            >
+                <span>{entry.data.maker}</span>
+                <span>/</span>
+                <span>{entry.data.category}</span>
+                {
+                    entry.data.acquired_date && (
+                        <>
+                            <span>/</span>
+                            <span>
+                                {
+                                    entry.data.acquired_date
+                                        .toISOString()
+                                        .split("T")[0]
+                                }
+                            </span>
+                        </>
+                    )
+                }
+            </div>
+        </header>
+
+        {
+            entry.data.cover_img && (
+                <img
+                    src={entry.data.cover_img}
+                    alt={entry.data.name}
+                    style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #3c4043; margin-bottom: 2.5rem;"
+                />
+            )
+        }
+
+        <div
+            class="content-body"
+            style="line-height: 1.8; color: #e8eaed; font-size: 1.05rem;"
+        >
+            <Content />
+        </div>
+    </article>
+</BaseLayout>
+
+<style is:global>
+    .content-body p {
+        margin-bottom: 1.5rem;
+    }
+</style>

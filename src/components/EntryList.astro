@@ -1,0 +1,63 @@
+---
+const { page, collectionPath } = Astro.props;
+---
+
+<div style="display: flex; flex-direction: column; gap: 0.5rem;">
+    {
+        page.data.map((entry) => (
+            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #1f2023; padding: 0.6rem 0;">
+                <a
+                    href={`/${collectionPath}/${entry.slug}`}
+                    style="font-size: 1rem; color: #8ab4f8; text-decoration: none;"
+                >
+                    {entry.data.title || entry.data.name}
+                </a>
+
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    {entry.data.rating && (
+                        <span style="color: #fbbc05; font-size: 0.8rem; font-variant-numeric: tabular-nums;">
+                            {entry.data.rating}/10
+                        </span>
+                    )}
+                    <span style="color: #5f6368; font-size: 0.8rem; font-variant-numeric: tabular-nums; white-space: nowrap;">
+                        {
+                            (
+                                entry.data.published_at ||
+                                entry.data.date_watched ||
+                                entry.data.date_read
+                            )
+                                ?.toISOString()
+                                .split("T")[0]
+                        }
+                    </span>
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<footer
+    style="margin-top: 3rem; display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: #5f6368; font-weight: bold;"
+>
+    {
+        page.url.prev ? (
+            <a href={page.url.prev} style="color: #8ab4f8;">
+                PREV
+            </a>
+        ) : (
+            <span>PREV</span>
+        )
+    }
+    <span style="letter-spacing: 0.1em;"
+        >{page.currentPage} / {page.lastPage}</span
+    >
+    {
+        page.url.next ? (
+            <a href={page.url.next} style="color: #8ab4f8;">
+                NEXT
+            </a>
+        ) : (
+            <span>NEXT</span>
+        )
+    }
+</footer>

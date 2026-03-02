@@ -1,0 +1,52 @@
+---
+const { title } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title} | imkdir.</title>
+    </head>
+    <body
+        style="background: #121212; color: #e8eaed; font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace; margin: 0; padding: 0;"
+    >
+        <nav
+            style="padding: 2rem 2rem 1rem 2rem; max-width: 800px; margin: 0 auto; display: flex; gap: 1.5rem; font-size: 0.9rem;"
+        >
+            <a href="/" style="font-weight: 700; text-decoration: none;"
+                >index</a
+            >
+            <a href="/posts/1" style="text-decoration: none; color: #9aa0a6;"
+                >posts</a
+            >
+            <a href="/films/1" style="text-decoration: none; color: #9aa0a6;"
+                >films</a
+            >
+            <a href="/books/1" style="text-decoration: none; color: #9aa0a6;"
+                >books</a
+            >
+            <a href="/ideas/1" style="text-decoration: none; color: #9aa0a6;"
+                >ideas</a
+            >
+        </nav>
+
+        <main style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+            <slot />
+        </main>
+
+        <style is:global>
+            a {
+                color: #8ab4f8;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            nav a:hover {
+                color: #e8eaed !important;
+                text-decoration: none;
+            }
+        </style>
+    </body>
+</html>

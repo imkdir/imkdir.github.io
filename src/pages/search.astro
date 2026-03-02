@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Search Archive">
+    <h1
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 2rem;"
+    >
+        Museum / Search
+    </h1>
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+    <div id="search" style="min-height: 400px;"></div>
+
+    <script is:inline>
+        window.addEventListener("DOMContentLoaded", (event) => {
+            new PagefindUI({
+                element: "#search",
+                showSubResults: true,
+                resetStyles: false, // This lets it inherit your minimalist CSS
+            });
+        });
+    </script>
+
+    <style is:global>
+        .pagefind-ui__search-input {
+            background-color: #1f2023 !important; /* Slightly lighter than the page background */
+            border: 1px solid #3c4043 !important;
+
+            /* Force the text to be bright white */
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+
+            /* Make the blinking typing cursor your link blue */
+            caret-color: #8ab4f8 !important;
+
+            font-family:
+                ui-monospace, "Cascadia Code", "Source Code Pro", monospace !important;
+            font-size: 1rem !important;
+            padding-left: 3rem !important; /* Ensure text doesn't hide under the magnifying glass */
+        }
+
+        /* Make the placeholder text readable but muted */
+        .pagefind-ui__search-input::placeholder,
+        .pagefind-ui__search-input::-webkit-input-placeholder {
+            color: #9aa0a6 !important;
+            -webkit-text-fill-color: #9aa0a6 !important;
+            opacity: 1 !important;
+        }
+
+        /* Keep the focus state clean */
+        .pagefind-ui__search-input:focus {
+            border-color: #8ab4f8 !important;
+            outline: none !important;
+        }
+
+        /* 2. The "Clear" Button */
+        .pagefind-ui__search-clear {
+            background-color: transparent !important;
+            color: #5f6368 !important;
+            border: none !important;
+        }
+
+        /* 3. The "X results for..." text */
+        .pagefind-ui__message {
+            color: #9aa0a6 !important;
+            font-family: ui-monospace, monospace !important;
+        }
+
+        /* 4. Fix the glaring white dividers */
+        .pagefind-ui__result {
+            border-top: 1px solid #1f2023 !important;
+            border-bottom: 1px solid #1f2023 !important;
+            padding: 2rem 0 !important;
+        }
+        .pagefind-ui__result:last-of-type {
+            border-bottom: none !important;
+        }
+
+        /* 5. Make the Titles look like your links */
+        .pagefind-ui__result-title,
+        .pagefind-ui__result-title .pagefind-ui__result-link {
+            color: #8ab4f8 !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+            font-family: ui-monospace, monospace !important;
+        }
+
+        /* 6. The Excerpt text */
+        .pagefind-ui__result-excerpt {
+            color: #e8eaed !important; /* Brighter for readability */
+            line-height: 1.6 !important;
+            margin-top: 0.5rem !important;
+        }
+
+        /* 7. The matched Search Term highlight */
+        .pagefind-ui__result-excerpt mark {
+            background-color: transparent !important;
+            color: #8ab4f8 !important; /* Blue to stand out */
+            font-weight: bold !important;
+            text-decoration: underline !important; /* Simple underline */
+            border: none !important;
+        }
+    </style>
+</BaseLayout>

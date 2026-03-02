@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 Not Found">
+    <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: 50vh;"
+    >
+        <h1
+            style="font-size: 5rem; margin: 0; color: #3c4043; letter-spacing: -0.05em; font-weight: 700;"
+        >
+            404
+        </h1>
+
+        <p
+            style="color: #9aa0a6; font-size: 1.05rem; margin-top: 0.5rem; margin-bottom: 2.5rem;"
+        >
+            how did you get here?
+        </p>
+
+        <a
+            href="/"
+            style="display: inline-flex; align-items: center; gap: 8px; color: #8ab4f8; text-decoration: none; font-size: 0.9rem;"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="19" y1="12" x2="5" y2="12"></line><polyline
+                    points="12 19 5 12 12 5"></polyline></svg
+            >
+            <span>return to index</span>
+        </a>
+    </div>
+</BaseLayout>

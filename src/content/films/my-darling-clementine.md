@@ -5,4 +5,4 @@ format: "Blu-Ray"
 cover_img: ""
 rating: 10
 ---
-One of my favorite westerns.
+One of my favorite westerns. [to be continued]

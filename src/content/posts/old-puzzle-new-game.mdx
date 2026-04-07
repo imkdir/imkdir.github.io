@@ -1,0 +1,31 @@
+---
+title: "Once Upon a Puzzle"
+published_at: 2019-11-01
+isDraft: false
+tags: ["ios", "swift", "games"]
+---
+
+Once while I was online looking for a job, a company's job application form requires one to solve a puzzle before one can submit, the question states:
+
+*Only the white block is movable, in the left, right, up, and down direction. Give the shortest sequence of steps to go from A to B.*
+
+![Puzzle A to B](/imgs/posts/puzzle-ab.png)
+
+So I made an app for me to try out this puzzle.
+
+<video width="250" controls>
+  <source src="/video/puzzle-app.mp4" type="video/mp4" />
+</video>
+
+Now fast forward, three years later, I still don't know the answer, but yesterday I came across this project while I was cleaning up my repositories. I cloned it and decided to have a look, why not? Within half an hour, I finished refactoring and some UI refinements, as this is 1.1, not 2.0. Surprisingly I learned a lot during this cleanup:
+
+- Upgrading from Swift 2 to 5 for such a small code base only needs less than a minute.
+- Refactoring reduces a lot of code; `cloc` shows code lines went from 346 down to 157. The program becomes more straightforward, as comment line count went down too.
+- Without any 3rd party framework dependencies, from iOS to Catalyst is just two checkboxes away.
+- Avoid assigning `cgColor` to layer properties; they don't support dark mode at all.
+- If you go with Storyboard, *Embed in View* is your friend; it makes Auto Layout dead simple.
+- Even in Storyboard, watch out for violating the DRY principle. When there are many copies of `@IBDesignable` views, and most of them have the same style, move the appearance setup into source code.
+- Global constant (let alone variable!) is problematic. You can do better.
+- Every crash on force-unwrapped `nil` is an opportunity to change the function's return type to `Optional` and apply `guard` against its assignment.
+
+I created this project on October 10, 2016, while I was looking for a job. Three days later, I got my first job; thus, this toy project always has a special meaning to me.

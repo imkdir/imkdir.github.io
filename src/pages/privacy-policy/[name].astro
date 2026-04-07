@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const { name } = Astro.params;
+const appName = (name ?? "app")
+  .split(/[-_\s]+/)
+  .filter(Boolean)
+  .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+  .join(" ");
+---
+
+<BaseLayout title={`${appName} Privacy Policy`}>
+  <h1
+    style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 3rem;"
+  >
+    Index / Privacy Policy
+  </h1>
+
+  <article style="max-width: 640px;">
+    <header style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.8rem; margin: 0 0 0.75rem 0; color: #e8eaed;">
+        {appName} Privacy Policy
+      </h2>
+      <p style="margin: 0; color: #9aa0a6; line-height: 1.8;">
+        In short, we do not collect any of your data.
+      </p>
+    </header>
+
+    <div class="policy-copy" style="color: #ccc; line-height: 1.8; font-size: 1.05rem;">
+      <p>
+        Your logs and preferences stay on your device, and only you have access to them.
+        We do not collect, store, or transmit that information to our servers.
+      </p>
+      <p>
+        If this policy changes in the future, this page will be updated to reflect the new behavior.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

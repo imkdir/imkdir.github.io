@@ -1,0 +1,444 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Resume">
+    <h1
+        style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: #5f6368; margin-bottom: 3rem;"
+    >
+        Index / Resume
+    </h1>
+
+    <section style="margin-bottom: 3rem;">
+        <div
+            style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; border-bottom: 1px solid #1f2023; padding-bottom: 1.5rem;"
+        >
+            <div>
+                <h2
+                    style="font-size: 2rem; margin: 0 0 0.5rem 0; color: #e8eaed;"
+                >
+                    DONG CHENG
+                </h2>
+                <p style="margin: 0; color: #9aa0a6; line-height: 1.8;">
+                    Shanghai, China<br />
+                    Senior iOS Engineer<br />
+                    9+ years building consumer apps at scale
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 20px;">
+                <a href="mailto:hihengd@gmail.com" class="social-link gmail">
+                    <img
+                        src="imgs/brands/gmail.svg"
+                        width="18"
+                        height="18"
+                        alt="Gmail"
+                    />
+                </a>
+                <a
+                    href="https://www.github.com/imkdir"
+                    target="_blank"
+                    class="social-link github"
+                >
+                    <img
+                        src="imgs/brands/github.svg"
+                        width="18.35"
+                        height="18"
+                        alt="GitHub"
+                    />
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+        <h3 class="section-title">Summary</h3>
+        <p class="body-copy">
+            Senior iOS Engineer with 9+ years of experience building and
+            shipping consumer mobile applications at scale. Strong background in
+            Swift, SwiftUI, UIKit, Objective-C, app architecture, performance
+            optimization, networking, local persistence, and App Store delivery.
+            Recently expanded into full-stack product development with React and
+            AI-assisted workflows, building and deploying independent products
+            end to end.
+        </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-grid">
+            <div>
+                <div class="label">Mobile</div>
+                <p class="meta-copy">
+                    Swift, SwiftUI, UIKit, Objective-C, Core Data, Core
+                    Graphics, RxSwift, IGListKit, Texture
+                </p>
+            </div>
+            <div>
+                <div class="label">Frontend / Full-Stack</div>
+                <p class="meta-copy">
+                    React, JavaScript, TypeScript, Node.js, Express, SQLite
+                </p>
+            </div>
+            <div>
+                <div class="label">Tools / Workflow</div>
+                <p class="meta-copy">Xcode, Git, Zed, Codex, Gemini</p>
+            </div>
+            <div>
+                <div class="label">Other</div>
+                <p class="meta-copy">
+                    App Store release management, performance optimization,
+                    debugging, documentation
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+        <h3 class="section-title">Professional Experience</h3>
+
+        <article class="entry">
+            <div class="entry-header">
+                <div>
+                    <h4 class="entry-title">
+                        <a
+                            href="https://glowing.com/"
+                            target="_blank"
+                            rel="noopener noreferrer">Glow</a
+                        >
+                    </h4>
+                    <div class="entry-subtitle">
+                        iOS Engineer · Shanghai, China
+                    </div>
+                </div>
+                <div class="entry-date">Nov 2019 – Nov 2025</div>
+            </div>
+
+            <ul class="entry-list">
+                <li>
+                    Built and maintained core features across multiple iOS apps
+                    in the Glow ecosystem, supporting a large global consumer
+                    user base and shipping production features at scale.
+                </li>
+                <li>
+                    Developed internal debugging tools that improved engineering
+                    efficiency and streamlined team collaboration.
+                </li>
+                <li>
+                    Improved app performance and stability in areas such as
+                    scrolling smoothness, crash reduction, and architecture
+                    consistency, including building reusable internal frameworks
+                    such as <a
+                        href="https://github.com/imkdir/Ark"
+                        target="_blank"
+                        rel="noopener noreferrer">Ark</a
+                    >.
+                </li>
+                <li>
+                    Managed App Store release workflows, including submission,
+                    release monitoring, and coordination across teams.
+                </li>
+                <li>
+                    Collaborated with product, design, QA, and backend teams to
+                    define requirements, deliver features, and iterate on user
+                    feedback in a fast-paced environment.
+                </li>
+                <li>
+                    Mentored junior engineers, contributed to code reviews, and
+                    helped improve engineering practices by introducing reusable
+                    MVVM-based architecture across projects.
+                </li>
+            </ul>
+
+            <div class="subsection-label">Apps / product areas worked on</div>
+            <ul class="entry-list compact">
+                <li>
+                    <strong
+                        ><a
+                            href="https://apps.apple.com/us/app/glow-ovulation-period-app/id638021335"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Glow Ovulation &amp; Period Tracker</a
+                        ></strong
+                    > — worked on major feature iterations including timeline and
+                    chart experiences, as well as bug fixes and performance enhancements.
+                </li>
+                <li>
+                    <strong
+                        ><a
+                            href="https://apps.apple.com/us/app/glow-baby-tracker-growth-app/id1077177456"
+                            target="_blank"
+                            rel="noopener noreferrer">Glow Baby Tracker</a
+                        ></strong
+                    > — contributed to feature development, maintenance, and performance
+                    improvements for parenting-focused user workflows.
+                </li>
+            </ul>
+        </article>
+
+        <article class="entry">
+            <div class="entry-header">
+                <div>
+                    <h4 class="entry-title">
+                        <a
+                            href="https://www.nonda.co/"
+                            target="_blank"
+                            rel="noopener noreferrer">nonda</a
+                        >
+                    </h4>
+                    <div class="entry-subtitle">
+                        iOS Engineer · Shanghai, China
+                    </div>
+                </div>
+                <div class="entry-date">Oct 2016 – Aug 2018</div>
+            </div>
+
+            <ul class="entry-list">
+                <li>
+                    Developed and shipped native iOS features in Swift for
+                    CoreBluetooth-powered applications, including work related
+                    to <a
+                        href="https://apps.apple.com/us/app/zus-save-car-expenses/id1038723291"
+                        target="_blank"
+                        rel="noopener noreferrer">ZUS</a
+                    >.
+                </li>
+                <li>
+                    Built an Auto Layout framework, <a
+                        href="https://github.com/imkdir/Ariel"
+                        target="_blank"
+                        rel="noopener noreferrer">Ariel</a
+                    >, to reduce boilerplate code and improve maintainability
+                    and development speed.
+                </li>
+                <li>
+                    Integrated RxSwift with MVVM architecture to bind BLE data
+                    streams to the UI in a clean, reactive workflow.
+                </li>
+                <li>
+                    Participated in code reviews, debugging, release support,
+                    and collaboration with designers and backend engineers.
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+        <h3 class="section-title">Selected Independent Projects</h3>
+
+        <article class="entry">
+            <div class="entry-header">
+                <div>
+                    <h4 class="entry-title">
+                        <a
+                            href="https://apps.apple.com/us/app/nihilo/id6757951351"
+                            target="_blank"
+                            rel="noopener noreferrer">nihilo</a
+                        >
+                    </h4>
+                    <div class="entry-subtitle">SwiftUI</div>
+                </div>
+                <div class="entry-date">2026</div>
+            </div>
+
+            <ul class="entry-list">
+                <li>
+                    Built a native weight-loss tracking app based on an idea
+                    first validated in spreadsheets.
+                </li>
+                <li>
+                    Designed and shipped the product independently from concept
+                    to App Store release.
+                </li>
+                <li>
+                    Used AI-assisted development tools such as Gemini in Xcode
+                    for prototyping, debugging, refactoring, and UI iteration.
+                </li>
+            </ul>
+        </article>
+
+        <article class="entry">
+            <div class="entry-header">
+                <div>
+                    <h4 class="entry-title">imkdiread.com</h4>
+                    <div class="entry-subtitle">
+                        React, Node.js, Express, SQLite, Gemini API,
+                        DigitalOcean
+                    </div>
+                </div>
+                <div class="entry-date">2026</div>
+            </div>
+
+            <ul class="entry-list">
+                <li>
+                    Built a full-stack, AI-powered PDF reading companion and
+                    Zettelkasten workspace for organizing book highlights.
+                </li>
+                <li>
+                    Engineered a context-aware LLM routing system with dynamic
+                    anchor prompts to reduce context drift in long AI chats.
+                </li>
+                <li>
+                    Owned end-to-end development, from designing the SQLite
+                    database and REST API to deploying the monolithic
+                    architecture on a VPS.
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+        <h3 class="section-title">Education</h3>
+        <article
+            class="entry"
+            style="margin-bottom: 0; padding-bottom: 0; border-bottom: 0;"
+        >
+            <div class="entry-header">
+                <div>
+                    <h4 class="entry-title">Qingdao University</h4>
+                    <div class="entry-subtitle">
+                        Bachelor of Engineering in Digital Media Technology
+                    </div>
+                </div>
+                <div class="entry-date">2015</div>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <h3 class="section-title">Languages</h3>
+        <p class="body-copy">
+            Chinese (Native) · English (Professional working proficiency)
+        </p>
+    </section>
+</BaseLayout>
+
+<style>
+    .section-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #5f6368;
+        margin: 0 0 1.25rem 0;
+    }
+
+    .body-copy {
+        color: #e8eaed;
+        line-height: 1.8;
+        font-size: 1rem;
+        margin: 0;
+        max-width: 720px;
+    }
+
+    .meta-copy {
+        color: #9aa0a6;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem 2rem;
+    }
+
+    .label {
+        color: #e8eaed;
+        margin-bottom: 0.4rem;
+        font-weight: 700;
+    }
+
+    .entry {
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #1f2023;
+    }
+
+    .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .entry-title {
+        margin: 0;
+        color: #e8eaed;
+        font-size: 1.05rem;
+    }
+
+    .entry-subtitle {
+        color: #9aa0a6;
+        margin-top: 0.25rem;
+        line-height: 1.6;
+    }
+
+    .entry-date {
+        color: #5f6368;
+        white-space: nowrap;
+        font-size: 0.95rem;
+        padding-top: 0.1rem;
+    }
+
+    .entry-list {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: #e8eaed;
+        line-height: 1.75;
+    }
+
+    .entry-list li + li {
+        margin-top: 0.5rem;
+    }
+
+    .entry-list.compact {
+        margin-top: 0.4rem;
+    }
+
+    .subsection-label {
+        color: #5f6368;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.7rem;
+        margin: 1.1rem 0 0.5rem 0;
+    }
+
+    @media (max-width: 720px) {
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .entry-header {
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .entry-date {
+            white-space: normal;
+            padding-top: 0;
+        }
+    }
+
+    .entry-title a,
+    .entry-list a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition:
+            border-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .entry-title a:hover,
+    .entry-list a:hover {
+        border-bottom-color: #5f6368;
+        color: #e8eaed;
+    }
+
+    .entry-title a:visited,
+    .entry-list a:visited {
+        color: inherit;
+    }
+</style>
